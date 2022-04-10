@@ -1,0 +1,17 @@
+---
+- name: "Main YML"
+  hosts: all
+  become: true
+  serial: 1
+  tasks:
+    - name: "Exporter"
+      include_tasks: exporter/exporter.yml
+      when: inventory_hostname in groups ['node']
+
+    - name: "Garafana"
+      include_tasks: garfana/garfana.yml
+      when: inventory_hostname in groups ['prometheus']
+
+    - name: "prometheus"
+      include_tasks: prometheus/prometheus.yml
+      when: inventory_hostname in groups ['prometheus']  

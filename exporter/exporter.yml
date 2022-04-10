@@ -1,0 +1,37 @@
+---
+
+- name: "Creating node_exporter_user"
+  user:
+    name: "{{ node_user }}"
+    create_home: no
+
+- name: "Copying service file"
+  template:
+    src: ./exporter/node_exporter.service.tmpl
+    dest: /etc/systemd/system/node_exporter.service
+    owner: "{{ node_user }}"
+    group: "{{ node_user }}"
+
+- name: "downloading and unzipping the node-exporter file"
+  unarchive:
+    src: "{{ node_url }}"
+    dest: /opt/
+    remote_src: yes
+  register: down 
+
+- name: "Moving file contents"
+  command: mv /opt/node_exporter-1.1.2.linux-amd64 /opt/node_exporter
+  when: down.changed
+
+- name: "Copying file"
+  copy:
+    src: /opt/node_exporter/node_exporter
+    dest: /usr/local/bin/
+    remote_src: yes
+    mode: '0755'
+  when: down.changed  
+
+- name: "Restarting Service"
+  service:
+    name: node_exporter
+    state: restarted  

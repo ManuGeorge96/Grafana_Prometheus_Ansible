@@ -1,0 +1,18 @@
+---
+- name: "Setting Up Garfana Repo"
+  copy:
+    src: ./grafana.repo
+    dest: /etc/yum.repos.d/grafana.repo
+    owner: root
+    group: root
+
+- name: "Installing grafana"
+  yum:
+    name: grafana
+    state: present
+
+- name: "Restarting grafana"
+  service:
+    name: grafana-server
+    state: restarted
+    enabled: true  
