@@ -12,5 +12,14 @@ Ansible Playbook for setting up Grafan and Prometheus. Here used 2 nodes for mon
 
 ## Sample Output
 
+[<img align="center" alt="Unix" width="700" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/node1.PNG" />][ln]
+[<img align="center" alt="Unix" width="700" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/node2.PNG" />][ln]
+[<img align="center" alt="Unix" width="700" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/prometheus.PNG" />][ln]
+[<img align="center" alt="Unix" width="700" src="https://raw.githubusercontent.com/ManuGeorge96/ManuGeorge96/master/Tools/grafana.PNG" />][ln]
+
+
+
+[ln]: https://www.linkedin.com/in/manu-george-03453613a
+
 
 
